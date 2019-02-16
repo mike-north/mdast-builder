@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/mike-north/mdast-builder/compare/v1.0.0...v1.0.1) (2019-02-16)
+
+
+### Bug Fixes
+
+* add repo to package.json ([94a8a40](https://github.com/mike-north/mdast-builder/commit/94a8a40))
+
 # 1.0.0 (2019-02-16)
 
 

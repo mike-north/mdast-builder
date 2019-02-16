@@ -4,6 +4,7 @@
   "keywords": [
     "mdast"
   ],
+  "version": "0.0.0-development",
   "license": "BSD-2-Clause",
   "scripts": {
     "pretest": "tsc",
@@ -11,7 +12,8 @@
     "build": "tsc -b .",
     "build:watch": "yarn build -- --watch",
     "test": "nyc mocha",
-    "test:watch": "mocha --watch"
+    "test:watch": "mocha --watch",
+    "semantic-release": "semantic-release"
   },
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",

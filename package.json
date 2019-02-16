@@ -6,11 +6,15 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
+    "pretest": "tsc",
+    "prepare": "tsc",
     "build": "tsc -b .",
     "build:watch": "yarn build -- --watch",
-    "test": "mocha",
+    "test": "nyc mocha",
     "test:watch": "mocha --watch"
   },
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "devDependencies": {
     "@commitlint/cli": "7.5.2",
     "@commitlint/config-conventional": "7.5.0",
@@ -22,10 +26,13 @@
     "chai": "^4.2.0",
     "husky": "^1.3.1",
     "mocha": "^5.2.0",
+    "mocha-typescript": "^1.1.17",
     "nyc": "^13.3.0",
+    "remark-stringify": "^6.0.4",
     "source-map-support": "^0.5.10",
     "ts-node": "^8.0.2",
-    "typescript": "^3.3.3"
+    "typescript": "^3.3.3",
+    "unified": "^7.1.0"
   },
   "dependencies": {
     "@types/unist": "^2.0.3"
@@ -42,5 +49,23 @@
   },
   "release": {
     "extends": "@mike-north/js-lib-semantic-release-config"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "test/**/*.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "all": true
   }
 }

@@ -20,19 +20,18 @@ const valueNode = (type: string, value: string): Node => ({
   value
 });
 
-const nodeWithChildren = (type: string, kids?: Children): Parent => {
-  const children = kids ? normalizeChildren(kids) : [];
-
-  return {
-    type,
-    children
-  };
-};
+const nodeWithChildren = (type: string, kids?: Children): Parent => ({
+  type,
+  children: normalizeChildren(kids)
+});
 
 export const text = (value: string) => valueNode('text', value);
 export const inlineCode = (value: string) => valueNode('inlineCode', value);
+export const html = (value: string) => valueNode('html', value);
 
 export const strong = (kids?: Children) => nodeWithChildren('strong', kids);
+export const emphasis = (kids?: Children) => nodeWithChildren('emphasis', kids);
+export const strike = (kids?: Children) => nodeWithChildren('delete', kids);
 export const tableCell = (kids?: Children) =>
   nodeWithChildren('tableCell', kids);
 export const tableRow = (kids?: Children) => nodeWithChildren('tableRow', kids);
@@ -40,6 +39,8 @@ export const table = (
   align?: ['left' | 'right', 'left' | 'right' | 'center'],
   kids?: Children
 ) => ({ ...nodeWithChildren('table', kids), align });
+
+export const brk = Object.freeze({ type: 'break' });
 
 export const link = (url: string, title: string = '', kids?: Children) => ({
   ...nodeWithChildren('link', kids),
@@ -53,19 +54,35 @@ export const rootWithTitle = (
   depth: number,
   title: Children,
   kids?: Children
-) => root([heading(depth, title), paragraph(kids)]);
+) => {
+  return root([heading(depth, title), ...normalizeChildren(kids)]);
+};
 
 export const paragraph = (kids?: Children) =>
   nodeWithChildren('paragraph', kids);
+
+export const image = (
+  url: string,
+  title?: string,
+  alt?: string,
+  kids?: Children
+) => ({ ...nodeWithChildren('image', kids), url, title, alt });
+
+export const blockquote = (kids?: Children) =>
+  nodeWithChildren('blockquote', kids);
+
 export const code = (lang: string, value: string) => ({
   ...valueNode('code', value),
   lang
 });
 
-export const heading = (depth: number, kids: Children): Parent => ({
-  ...nodeWithChildren('heading', kids),
-  depth
-});
+export const heading = (depth: number, kids?: Children): Parent => {
+  if (depth < 1) throw new Error(`Invalid depth: ${depth}`);
+  return {
+    ...nodeWithChildren('heading', kids),
+    depth
+  };
+};
 
 export const list = (
   ordered: 'ordered' | 'unordered',

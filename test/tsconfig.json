@@ -2,16 +2,16 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "lib",
     "moduleResolution": "node",
     "declaration": true,
+    "noEmit": true,
     "sourceMap": true,
     "lib": ["scripthost", "esnext"],
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["types/*"]
+      "*": ["../types/*"]
     }
   },
-  "exclude": ["lib"]
+  "exclude": ["../src", "."]
 }

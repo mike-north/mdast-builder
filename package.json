@@ -15,6 +15,10 @@
     "test:watch": "mocha --watch",
     "semantic-release": "semantic-release"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mike-north/mdast-builder"
+  },
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
   "devDependencies": {

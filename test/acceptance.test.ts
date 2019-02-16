@@ -63,7 +63,7 @@ describe('acceptance tests', () => {
     expectMd(rootWithTitle(1, text('hello'))).to.eq('# hello\n');
   });
 
-  it('root foo', () => {
+  it('README example', () => {
     expectMd(
       root([
         heading(2, text('Begin')),

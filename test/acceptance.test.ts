@@ -23,7 +23,8 @@ import {
   tableCell,
   tableRow,
   text,
-  image
+  image,
+  separator
 } from '../src/index';
 
 var processor = unified().use(stringify, {
@@ -109,8 +110,22 @@ these are the starting instructions
     expectMd(strong(text('foo'))).to.eq('**foo**');
   });
 
-  it('brk', () => {
-    expectMd(brk).to.eq('  \n');
+  it('separator', () => {
+    expectMd(
+      root([
+        heading(1, text('hello')),
+        paragraph(text('this is a thing')),
+        separator,
+        paragraph(text('another thing'))
+      ])
+    ).to.eq(`# hello
+
+this is a thing
+
+---
+
+another thing
+`);
   });
 
   it('emphasis', () => {

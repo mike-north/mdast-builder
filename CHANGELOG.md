@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/mike-north/mdast-builder/compare/v1.0.1...v1.1.0) (2019-02-22)
+
+
+### Features
+
+* separator ([6c58a84](https://github.com/mike-north/mdast-builder/commit/6c58a84))
+
 ## [1.0.1](https://github.com/mike-north/mdast-builder/compare/v1.0.0...v1.0.1) (2019-02-16)
 
 

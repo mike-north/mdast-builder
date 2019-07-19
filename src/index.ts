@@ -36,7 +36,7 @@ export const tableCell = (kids?: Children) =>
   nodeWithChildren("tableCell", kids);
 export const tableRow = (kids?: Children) => nodeWithChildren("tableRow", kids);
 export const table = (
-  align?: ["left" | "right", "left" | "right" | "center"],
+  align?: ("left" | "right" | "center" | null)[],
   kids?: Children
 ) => ({ ...nodeWithChildren("table", kids), align });
 

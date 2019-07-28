@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/mike-north/mdast-builder/compare/v1.1.0...v1.1.1) (2019-07-28)
+
+
+### Bug Fixes
+
+* correct `table` align type ([978ef70](https://github.com/mike-north/mdast-builder/commit/978ef70))
+
 # [1.1.0](https://github.com/mike-north/mdast-builder/compare/v1.0.1...v1.1.0) (2019-02-22)
 
 

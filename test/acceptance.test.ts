@@ -206,6 +206,47 @@ another thing
 *   second
 
 *   third`);
+
+    expectMd(
+      list(
+        'unordered',
+        listItem(
+          [
+            text('first'),
+            list('unordered', [
+              listItem(text('sub-first-a')),
+              listItem(text('sub-first-b')),
+              listItem(text('sub-first-c'))
+            ])
+          ],
+          true
+        )
+      )
+    ).to.eq(`*   first
+
+    *   sub-first-a
+    *   sub-first-b
+    *   sub-first-c`);
+
+    expectMd(
+      list(
+        'unordered',
+        listItem(
+          [
+            text('first'),
+            list('unordered', [
+              listItem(text('sub-first-a')),
+              listItem(text('sub-first-b')),
+              listItem(text('sub-first-c'))
+            ])
+          ],
+          false
+        )
+      )
+    ).to.eq(`*   first
+    *   sub-first-a
+    *   sub-first-b
+    *   sub-first-c`);
   });
 
   it('table', () => {

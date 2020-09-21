@@ -93,7 +93,9 @@ export const list = (
 ): Parent => ({
   ...nodeWithChildren("list", kids),
   ordered: ordered === "ordered",
-  spread,
+  spread
 });
-export const listItem = (kids: Children): Parent =>
-  nodeWithChildren("listItem", kids);
+export const listItem = (kids: Children, spread?: boolean): Parent => ({
+  ...nodeWithChildren('listItem', kids),
+  spread
+});

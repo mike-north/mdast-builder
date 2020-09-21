@@ -88,10 +88,12 @@ export const heading = (depth: number, kids?: Children): Parent => {
 
 export const list = (
   ordered: "ordered" | "unordered",
-  kids: Children
+  kids: Children,
+  spread?: boolean,
 ): Parent => ({
   ...nodeWithChildren("list", kids),
-  ordered: ordered === "ordered"
+  ordered: ordered === "ordered",
+  spread,
 });
 export const listItem = (kids: Children): Parent =>
   nodeWithChildren("listItem", kids);

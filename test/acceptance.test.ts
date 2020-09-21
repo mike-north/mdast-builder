@@ -166,6 +166,7 @@ another thing
     ).to.eq(`1.  first
 1.  second
 1.  third`);
+
     expectMd(
       list('unordered', [
         listItem(text('first')),
@@ -174,6 +175,36 @@ another thing
       ])
     ).to.eq(`*   first
 *   second
+*   third`);
+
+    expectMd(
+      list(
+        'unordered',
+        [
+          listItem(text('first')),
+          listItem(text('second')),
+          listItem(text('third'))
+        ],
+        false
+      )
+    ).to.eq(`*   first
+*   second
+*   third`);
+
+    expectMd(
+      list(
+        'unordered',
+        [
+          listItem(text('first')),
+          listItem(text('second')),
+          listItem(text('third'))
+        ],
+        true
+      )
+    ).to.eq(`*   first
+
+*   second
+
 *   third`);
   });
 

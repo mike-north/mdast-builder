@@ -38,7 +38,7 @@
     "source-map-support": "0.5.11",
     "ts-node": "8.1.1",
     "typescript": "3.3.3333",
-    "unified": "7.1.0"
+    "unified": "9.2.1"
   },
   "dependencies": {
     "@types/unist": "^2.0.3"

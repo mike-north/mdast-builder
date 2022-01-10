@@ -37,7 +37,7 @@
     "remark-stringify": "7.0.4",
     "source-map-support": "0.5.21",
     "ts-node": "8.10.2",
-    "typescript": "3.3.4000",
+    "typescript": "3.9.10",
     "unified": "7.1.0"
   },
   "dependencies": {

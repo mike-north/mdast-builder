@@ -166,6 +166,7 @@ another thing
     ).to.eq(`1.  first
 1.  second
 1.  third`);
+
     expectMd(
       list('unordered', [
         listItem(text('first')),
@@ -175,6 +176,77 @@ another thing
     ).to.eq(`*   first
 *   second
 *   third`);
+
+    expectMd(
+      list(
+        'unordered',
+        [
+          listItem(text('first')),
+          listItem(text('second')),
+          listItem(text('third'))
+        ],
+        false
+      )
+    ).to.eq(`*   first
+*   second
+*   third`);
+
+    expectMd(
+      list(
+        'unordered',
+        [
+          listItem(text('first')),
+          listItem(text('second')),
+          listItem(text('third'))
+        ],
+        true
+      )
+    ).to.eq(`*   first
+
+*   second
+
+*   third`);
+
+    expectMd(
+      list(
+        'unordered',
+        listItem(
+          [
+            text('first'),
+            list('unordered', [
+              listItem(text('sub-first-a')),
+              listItem(text('sub-first-b')),
+              listItem(text('sub-first-c'))
+            ])
+          ],
+          true
+        )
+      )
+    ).to.eq(`*   first
+
+    *   sub-first-a
+    *   sub-first-b
+    *   sub-first-c`);
+
+    expectMd(
+      list(
+        'unordered',
+        listItem(
+          [
+            text('first'),
+            list('unordered', [
+              listItem(text('sub-first-a')),
+              listItem(text('sub-first-b')),
+              listItem(text('sub-first-c'))
+            ])
+          ],
+          false
+        )
+      )
+    ).to.eq(`*   first
+    *   sub-first-a
+    *   sub-first-b
+    *   sub-first-c`);
   });
 
   it('table', () => {
